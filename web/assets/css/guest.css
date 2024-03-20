@@ -1,0 +1,106 @@
+.text-bg-dark::placeholder {
+    /* Đặt màu placeholder trắng cho input */
+    color: white;
+}
+
+header {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.fullItem {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.imgBrand {
+    box-shadow: 8px 0 16px rgba(0, 0, 0, 0.2);
+}
+
+.loginIcon {
+    box-shadow: -8px 0 16px rgba(0, 0, 0, 0.2);
+}
+
+.firstText {
+    text-align: center;
+    font-size: 13px;
+    line-height: 21px;
+    color: #666666;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.bannerHead img {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.textTitle {
+    font-size: 45px;
+    line-height: 55px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #1768b2;
+    text-align: center;
+}
+
+.service {
+    transition: all ease-in-out 500ms;
+    transform: scale(100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0 2px 16px rgba(157, 155, 155, 0.2);
+}
+
+.service img {
+    border-radius: 20px 20px 0 0;
+}
+
+.service:hover{
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: scale(110%);
+}
+
+.button-sm{
+    transition: all 0.5s;
+}
+
+.button-sm span {
+ cursor: pointer;
+ display: inline-block;
+ position: relative;
+ transition: 0.5s;
+}
+
+.button-sm span:after {
+ content: '»';
+ position: absolute;
+ opacity: 0;
+ top: 0;
+ right: -15px;
+ transition: 0.5s;
+}
+
+.button-sm:hover span {
+ padding-right: 15px;
+}
+
+.button-sm:hover span:after {
+ opacity: 1;
+ right: 0;
+}
+
+.c1_ul li{
+    padding-top: 15px;
+}
+
+.buto {
+  transition: all .2s ease-in-out; 
+  position: relative;
+}
+
+.buto:hover {
+  transform: translateY(-3px); 
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3); 
+}

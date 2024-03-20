@@ -1,0 +1,37 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 5, 2024, 3:56:31 PM
+    Author     : user
+*/
+
+body {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+img.rounded-circle {
+  width: 120px;
+  height: 120px;
+}
+
+form .row > .col {
+  padding-bottom: 0.5rem;
+}
+
+form .row > .col > label {
+  width: 100%;
+}
+
+form .row > .col > label > input {
+  width: 100%;
+}
+
+::placeholder {
+  color: #000000;
+}
+
+

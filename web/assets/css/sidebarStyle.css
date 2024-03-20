@@ -1,0 +1,19 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Feb 12, 2024, 3:56:16 PM
+    Author     : user
+*/
+
+.hover:hover {
+    background-color: #0D6EFD;
+    color: #FFFFFF;
+}
+
+.hover:active {
+    background-color: #FFC107;
+    color: #000000;
+}
