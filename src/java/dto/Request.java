@@ -47,6 +47,17 @@ public class Request implements Serializable {
         this.requestContent = requestContent;
     }
 
+    public Request(int requestId, Customer cusId, Employee empId, Contract contractId, ReStatus statusNo, Retype requestTypeId, String requestDate, String requestContent) {
+        this.requestId = requestId;
+        this.cusId = cusId;
+        this.empId = empId;
+        this.contractId = contractId;
+        this.statusNo = statusNo;
+        this.requestTypeId = requestTypeId;
+        this.requestDate = requestDate;
+        this.requestContent = requestContent;
+    }
+
     public int getRequestId() {
         return requestId;
     }

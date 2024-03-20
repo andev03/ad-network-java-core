@@ -44,7 +44,7 @@ public class ContractDAO implements I_ContractDAO {
                     int c_statusNo = tableContract.getInt("statusNo");
                     int c_contractNo = tableContract.getInt("contractNo");
                     String c_startDate = tableContract.getTimestamp("startDate").toLocalDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));;
-                    String c_endDate = tableContract.getTimestamp("startDate").toLocalDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                    String c_endDate = tableContract.getTimestamp("endDate").toLocalDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 
                     rs = new Contract(c_contractId, new CustomerDAO().getCustomerById(c_cusId), new EmployeeDAO().getEmployeeByAccId(c_empId), new TransactionDAO().getTransactionById(c_transactionId), new CoStatusDAO().getCoStatus(c_statusNo), new ContractTypeDAO().getContractType(c_contractNo), c_startDate, c_endDate);
 
@@ -86,7 +86,7 @@ public class ContractDAO implements I_ContractDAO {
                         int c_statusNo = tableAllContract.getInt("statusNo");
                         int c_contractNo = tableAllContract.getInt("contractNo");
                         String c_startDate = tableAllContract.getTimestamp("startDate").toLocalDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));;
-                        String c_endDate = tableAllContract.getTimestamp("startDate").toLocalDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                        String c_endDate = tableAllContract.getTimestamp("endDate").toLocalDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 
                         allContract.add(new Contract(c_contractId, new CustomerDAO().getCustomerById(c_cusId), new EmployeeDAO().getEmployeeByAccId(c_empId),
                                 new TransactionDAO().getTransactionById(c_transactionId), new CoStatusDAO().getCoStatus(c_statusNo),
@@ -240,7 +240,7 @@ public class ContractDAO implements I_ContractDAO {
             cn = DBUtil.getConnection();
             if (cn != null) {
                 String sqlContract = "UPDATE [Contract]\n"
-                        + "Set empId = ?\n"
+                        + "Set empId = ?, statusNo = 1\n"
                         + "Where cusId = ? And empId Is Null And contractId = ?";
                 PreparedStatement pstContract = cn.prepareStatement(sqlContract);
                 pstContract.setDouble(1, empId);
@@ -319,7 +319,7 @@ public class ContractDAO implements I_ContractDAO {
             cn = DBUtil.getConnection();
             if (cn != null) {
                 String sqlDevice = "INSERT INTO [Contract] ([cusId], [transactionId], [statusNo], [contractNo], [startDate], [endDate]) VALUES\n"
-                        + "(?,?,1,?,GETDATE(),DATEADD(MONTH, ?, GETDATE()))";
+                        + "(?,?,4,?,GETDATE(),DATEADD(MONTH, ?, GETDATE()))";
                 PreparedStatement pstDevice = cn.prepareStatement(sqlDevice, PreparedStatement.RETURN_GENERATED_KEYS);
                 pstDevice.setInt(1, cusId);
                 pstDevice.setInt(2, transactionId);
@@ -362,7 +362,7 @@ public class ContractDAO implements I_ContractDAO {
             cn = DBUtil.getConnection();
             if (cn != null) {
                 String sqlDevice = "INSERT INTO [Contract] ([cusId], [transactionId], [statusNo], [contractNo], [startDate], [endDate]) VALUES\n"
-                        + "(?,?,1,?,GETDATE(),DATEADD(MONTH, ?, GETDATE()))";
+                        + "(?,?,4,?,GETDATE(),DATEADD(MONTH, ?, GETDATE()))";
                 PreparedStatement pstDevice = cn.prepareStatement(sqlDevice, PreparedStatement.RETURN_GENERATED_KEYS);
                 pstDevice.setInt(1, cusId);
                 pstDevice.setInt(2, transactionId);

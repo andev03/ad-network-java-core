@@ -89,8 +89,7 @@
                                     of these services,
                                     continuously researching and developing to meet the increasing requirements of the market.</p>
                                 <p>With an expanding vision and constant creativity, A&D Network is not only a business unit but also a
-                                    reliable partner for customers and businesses,
-                                    providing comprehensive and advanced solutions in the field communication and technology.</p>
+                                    reliable partner for customers and businesses.</p>
                             </div>
                             <div class="container row d-flex justify-content-center justify-content-evenly"
                                  style="margin-bottom: 50px;">

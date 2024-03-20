@@ -13,7 +13,7 @@
         <title>History View Page</title>
     </head>
     <body>
-        
+
         <c:if test="${sessionScope.customer == null}">
             <c:redirect url="/" />
         </c:if>
@@ -38,7 +38,6 @@
                             <th>Request ID</th>
                             <th>Request Type</th>
                             <th>Request Date</th>
-                            <th>Finish Date</th>
                             <th>Name Employee</th>
                             <th>Status</th>
                             <th>Content</th>
@@ -58,7 +57,6 @@
                                             </c:otherwise>
                                         </c:choose>
                                         <td>${requestView.requestDate}</td>
-                                        <td>${requestView.finishDate}</td>
                                         <td>${requestView.empId.userId.fullName}</td>
                                         <td class="fw-bold">${requestView.statusNo.statusName}</td>
                                         <c:choose>

@@ -31,7 +31,7 @@
                 >
                 <!-- Login và Sign-up-->
                 <div class="text-end">
-                    <h5>Welcome, ${sessionScope.technician.userId.fullName}</h5>
+                    <h5>Welcome back, ${sessionScope.technician.userId.fullName}</h5>
                 </div>
             </div>
 
@@ -47,7 +47,7 @@
                         title="A&D Telecom"
                         style="width: 40px; height: 100px"
                         />
-                    <strong>Welcome back, ${sessionScope.technician.userId.fullName}</strong>
+                    <strong>${sessionScope.technician.userId.fullName}</strong>
                 </a>
 
                 <ul

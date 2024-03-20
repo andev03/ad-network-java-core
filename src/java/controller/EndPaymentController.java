@@ -62,7 +62,7 @@ public class EndPaymentController extends HttpServlet {
                     new ContractServiceDAO().insertContractService(serviceId, contractId);
                 }
                 request.getSession().setAttribute("cart", null);
-                response.sendRedirect("/AD_Network/MainController?view=viewHomePage");
+                response.sendRedirect("/AD_Network/MainController?view=viewHomePage&value=true");
             }
         }
     }

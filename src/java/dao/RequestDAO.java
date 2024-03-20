@@ -256,7 +256,7 @@ public class RequestDAO implements I_RequestDAO {
                         + "FROM Request\n"
                         + "Where empId = ? and statusNo between 1 and 3)\n"
                         + "SELECT [requestId], [cusId], [empId], [contractId], [statusNo], [requestTypeId], [requestDate], [finishDate], [requestContent]\n"
-                        + "FROM SortedUsers";
+                        + "FROM SortedUsers order By requestDate desc";
                 PreparedStatement pstRequestByCusId = cn.prepareStatement(sqlAllRequest);
                 pstRequestByCusId.setInt(1, cusId);
                 ResultSet tableRequestByCusId = pstRequestByCusId.executeQuery();
@@ -294,7 +294,7 @@ public class RequestDAO implements I_RequestDAO {
             cn = DBUtil.getConnection();
             if (cn != null) {
                 String sqlUpdateStatusRequest = "Update Request\n"
-                        + "Set statusNo = ?\n"
+                        + "Set statusNo = ?, finishDate = GETDATE()\n"
                         + "where empId = ? And requestId = ?";
 
                 PreparedStatement pstUpdateStatusRequest = cn.prepareStatement(sqlUpdateStatusRequest);
@@ -326,7 +326,7 @@ public class RequestDAO implements I_RequestDAO {
             if (cn != null) {
                 String sqlAllRequest = "SELECT [requestId], [cusId], [empId], [contractId], [statusNo], [requestTypeId], [requestDate], [finishDate], [requestContent]\n"
                         + "FROM [Request] \n"
-                        + "WHERE CONVERT(date, [requestDate]) = ? and empId = ?";
+                        + "WHERE CONVERT(date, [requestDate]) = ? and empId = ? Order By requestDate desc";
                 PreparedStatement pstRequestByCusId = cn.prepareStatement(sqlAllRequest);
                 pstRequestByCusId.setString(1, date);
                 pstRequestByCusId.setInt(2, empId);
@@ -366,7 +366,7 @@ public class RequestDAO implements I_RequestDAO {
             if (cn != null) {
                 String sqlAllRequest = "  SELECT [requestId], [cusId], [empId], [contractId], [statusNo], [requestTypeId], [requestDate], [finishDate], [requestContent]\n"
                         + "FROM [Request] \n"
-                        + "WHERE statusNo = ? and empId = ?";
+                        + "WHERE statusNo = ? and empId = ? Order By requestDate desc";
                 PreparedStatement pstRequestByCusId = cn.prepareStatement(sqlAllRequest);
                 pstRequestByCusId.setInt(1, statusNo);
                 pstRequestByCusId.setInt(2, empId);
@@ -664,9 +664,9 @@ public class RequestDAO implements I_RequestDAO {
         try {
             cn = DBUtil.getConnection();
             if (cn != null) {
-                String sqlRequestByCusId = "Select [requestId], [cusId], [empId], [contractId], [statusNo], [requestTypeId], [requestDate], [finishDate], [requestContent]\n"
+                String sqlRequestByCusId = "Select [requestId], [cusId], [empId], [contractId], [statusNo], [requestTypeId], [requestDate], [requestContent]\n"
                         + "From [Request]\n"
-                        + "Where [cusId] = ? and empId IS NOT NULL";
+                        + "Where [cusId] = ? order by requestDate desc";
                 PreparedStatement pstRequestByCusId = cn.prepareStatement(sqlRequestByCusId);
                 pstRequestByCusId.setInt(1, cusId);
                 ResultSet tableRequestByCusId = pstRequestByCusId.executeQuery();
@@ -679,10 +679,9 @@ public class RequestDAO implements I_RequestDAO {
                         int r_statusNo = tableRequestByCusId.getInt("statusNo");
                         int r_requestTypeId = tableRequestByCusId.getInt("requestTypeId");
                         String r_requestDate = tableRequestByCusId.getTimestamp("requestDate").toLocalDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
-                        String r_finishDate = tableRequestByCusId.getTimestamp("finishDate").toLocalDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
                         String r_requestContent = tableRequestByCusId.getString("requestContent");
 
-                        allRequestByCusId.add(new Request(r_requestId, new CustomerDAO().getCustomerById(r_cusId), new EmployeeDAO().getEmployeeByAccId(r_empId), new ContractDAO().getContract(r_contractId), new ReStatusDAO().getReStatus(r_statusNo), new RetypeDAO().getReType(r_requestTypeId), r_requestDate, r_finishDate, r_requestContent));
+                        allRequestByCusId.add(new Request(r_requestId, new CustomerDAO().getCustomerById(r_cusId), new EmployeeDAO().getEmployeeByAccId(r_empId), new ContractDAO().getContract(r_contractId), new ReStatusDAO().getReStatus(r_statusNo), new RetypeDAO().getReType(r_requestTypeId), r_requestDate, r_requestContent));
                     }
                 }
             }

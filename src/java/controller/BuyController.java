@@ -44,7 +44,7 @@ public class BuyController extends HttpServlet {
             } else {
                 Map<String, Integer> map = (HashMap<String, Integer>) request.getSession(false).getAttribute("cart");
                 for (int i = 1; i <= Integer.parseInt(request.getParameter("numberServiceInCart")); i++) {
-                    map.put(request.getParameter("txtQuantityNumber-" + i), Integer.parseInt(request.getParameter("txtquantity-" + i)));
+                    map.put(request.getParameter("txtQuantityNumber-" + i), 1);
                 }
                 request.setAttribute("transCycle", request.getParameter("transCycle"));
                 request.getSession(false).setAttribute("cart", map);

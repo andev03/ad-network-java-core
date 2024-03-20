@@ -100,7 +100,7 @@
                                                         <fmt:formatNumber var="priceService" value="${pr}" type="number" pattern="###,###"/>
                                                         <td>${priceService}đ/tháng</td>  
                                                         <td>${serviceInfor.getServiceForCartByName(cartInfor.key).sTypeId.sTypeDesc}</td>
-                                                        <td><input type="number" value="${cartInfor.value}"  min="1"  max="3" name="txtquantity-${i}"></td>
+                                                        <td>1</td>
                                                 <input type="hidden" name="txtQuantityNumber-${i}" value="${cartInfor.key}"/>
                                                 </tr>
                                             </c:forEach>

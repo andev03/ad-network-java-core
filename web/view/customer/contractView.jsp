@@ -68,7 +68,7 @@
                             <label class="form-label fw-bold" for="price">Price</label>
                             <c:set var="pr" value="${contractInfor.transactionId.transAmount}"/>
                             <fmt:formatNumber var="price" value="${pr}" type="number" pattern="###,###"/>
-                            <input type="text" readonly class="form-control" id="price" value="${price}">
+                            <input type="text" readonly class="form-control" id="price" value="${price} VNĐ">
                         </div>
                         <div class="col">
                             <label class="form-label fw-bold" for="cycle">Cycle</label>
@@ -107,7 +107,7 @@
                                         <td>${contractServiceView.serviceId.deviceId.deviceName}</td>
                                         <c:set var="pr" value="${contractServiceView.serviceId.price}" />
                                         <fmt:formatNumber var="price" value="${pr}" type="number" pattern="###,###"/>
-                                        <td>${price}</td>
+                                        <td>${price} VNĐ</td>
                                     </tr>
                                 </c:forEach>
                             </tbody>
